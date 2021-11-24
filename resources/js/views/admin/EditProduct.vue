@@ -20,27 +20,35 @@
 </template>
  
 <script>
-    export default {
-        data() {
+import axios from "axios";
+import * as notify from "../../utils/notify.js";
+
+export default {
+    name: "edit-product",
+    data() {
             return {
                 product: {}
             }
         },
-        created() {
-            this.axios
-                .get(`http://127.0.0.1/api/products/${this.$route.params.id}`)
-                .then((res) => {
+    created() {
+        axios.get(`http://127.0.0.1/api/products/${this.$route.params.id}`)
+        .then((res) => {
                     this.product = res.data;
                 });
-        },
-        methods: {
-            updateProduct() {
-                this.axios
-                    .patch(`http://127.0.0.1/api/products/${this.$route.params.id}`, this.product)
-                    .then((res) => {
-                        this.$router.push({ name: 'home' });
+    },
+    methods: {
+        async updateProduct(id) {
+        this.isLoading = true;
+        try {
+             axios.patch(`http://127.0.0.1/api/products/${this.$route.params.id}`, this.product)
+                .then((res) => {
+                        this.$router.push("/admin/pages/products");
                     });
-            }
+        }catch (error) {
+            notify.authError(error);
+            this.isLoading = false;
         }
-    }
+        },
+    },
+};
 </script>

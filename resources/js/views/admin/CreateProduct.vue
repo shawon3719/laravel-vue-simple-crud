@@ -20,22 +20,30 @@
 </template>
  
 <script>
-    export default {
-        data() {
+
+import axios from "axios";
+import * as notify from "../../utils/notify.js";
+
+export default {
+  name: "add-product",
+  data() {
             return {
                 product: {}
             }
         },
-        methods: {
-            addProduct() {
-                this.axios
-                    .post('http://127.0.0.1/api/products', this.product)
-                    .then(response => (
-                        this.$router.push({ name: 'home' })
-                    ))
-                    .catch(err => console.log(err))
-                    .finally(() => this.loading = false)
-            }
-        }
-    }
+  methods: {
+    async addProduct() {
+      this.isLoading = true;
+      try {
+        var response = await axios.post('http://127.0.0.1/api/products', this.product);
+        this.$router.push("/admin/pages/products");
+
+      }catch (error) {
+        notify.authError(error);
+        this.isLoading = false;
+      }
+    },
+  },
+};
+
 </script>

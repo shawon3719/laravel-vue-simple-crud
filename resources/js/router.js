@@ -125,6 +125,33 @@ let router = new Router({
             }
         },
         {
+            path: "/admin/pages/products",
+            name: "all-product",
+            component: () => import("./views/admin/AllProduct.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
+            path: "/admin/pages/product/create",
+            name: "create-product",
+            component: () => import("./views/admin/CreateProduct.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
+            path: "/admin/pages/product/edit",
+            name: "edit-product",
+            component: () => import("./views/admin/EditProduct.vue"),
+            meta: {
+                requiresAuth: true,
+                layout: AdminLayout
+            }
+        },
+        {
             path: "/admin/charts",
             name: "charts",
             component: () => import("./views/admin/charts.vue"),

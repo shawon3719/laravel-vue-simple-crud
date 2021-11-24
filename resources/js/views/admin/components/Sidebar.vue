@@ -122,6 +122,37 @@
         </div>
       </li>
 
+
+
+    <!-- Products -->
+
+    <li class="nav-item">
+        <a
+          class="nav-link collapsed"
+          href="#"
+          data-toggle="collapse"
+          data-target="#collapseProducts"
+          aria-expanded="true"
+          aria-controls="collapseProducts"
+        >
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Manage Products</span>
+        </a>
+        <div
+          id="collapseProducts"
+          class="collapse"
+          aria-labelledby="manageProducts"
+          data-parent="#accordionSidebar"
+        >
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Products:</h6>
+            <router-link class="collapse-item" to="/admin/pages/products">Products List</router-link>
+            <router-link class="collapse-item" to="/admin/pages/product/create">Create Product</router-link>
+          </div>
+        </div>
+      </li>
+
+
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <router-link class="nav-link" to="/admin/charts">
