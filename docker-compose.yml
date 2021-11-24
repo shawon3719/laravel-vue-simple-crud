@@ -6,7 +6,7 @@ services:
     container_name: test-app
     build:
       context: .
-      dockerfile: docker/Dockerfile-php7.3
+      dockerfile: docker/Dockerfile-php7.4
     restart: unless-stopped
     tty: true
     environment:
