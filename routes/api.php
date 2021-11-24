@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::middleware('api')->group(function () {
-    Route::resource('products', ProductController::class);
+Route::post('login', [Api\AuthController::class, 'login']);
+Route::post('register', [Api\RegisterController::class, 'register']);
+Route::post('forgot', [Api\ForgotController::class, 'forgot']);
+Route::post('reset', [Api\ForgotController::class, 'reset']);
+Route::get('email/resend/{user}', [Api\VerifyController::class, 'resend'])->name('verification.resend');
+Route::get('email/verify/{id}', [Api\VerifyController::class, 'verify'])->name('verification.verify');; // Make sure to keep this as your route name
+    
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('user', [Api\AuthController::class, 'user']);
 });

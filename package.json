@@ -21,11 +21,17 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
-        "vue-loader": "^15.9.8",
+        "vue-loader": "^15.9.7",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "vue-axios": "^3.4.0",
-        "vue-router": "^3.5.3"
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "chart.js": "^2.9.4",
+        "datatables.net-dt": "^1.1.0",
+        "startbootstrap-sb-admin-2": "^4.1.4",
+        "vue-router": "^3.5.2",
+        "vue-toasted": "^1.1.28",
+        "vuex": "^3.6.2",
+        "vuex-persistedstate": "^4.0.0"
     }
 }

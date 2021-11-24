@@ -8,7 +8,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Detail</th>
-                <!-- <th>Actions</th> -->
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -44,12 +44,25 @@
         },
         methods: {
             deleteProduct(id) { 
-                this.axios
+
+                if(confirm("Do you really want to delete?")){
+
+                    this.axios
                     .delete(`http://127.0.0.1/api/products/${id}`)
                     .then(response => {
                         let i = this.products.map(data => data.id).indexOf(id);
                         this.products.splice(i, 1)
                     });
+
+                                // axios.delete('/api/artist/'+id)
+                                // .then(resp => {
+                                //     this.artists.data.splice(index, 1);
+                                // })
+                                // .catch(error => {
+                                //     console.log(error);
+                                // })
+                }
+                
             }
         }
     }
